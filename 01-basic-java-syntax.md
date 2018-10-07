@@ -1,7 +1,5 @@
 # Learning Java
 
-"The first step of any project is to grossly underestimate its complexity and difficulty." -@nicollhunt
-
 *First sessions have been partly documented and are available at: http://learning-java.surge.sh/*
 
 #### Declaration and assignment:
