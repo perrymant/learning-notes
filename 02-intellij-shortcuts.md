@@ -1,6 +1,6 @@
 ## IntelliJ Shortcuts
 
-| Shortcut                 | Meaning                                        |
+| Shortcut (Mac)           | Meaning                                        |
 |--------------------------|------------------------------------------------|
 | alt + Return             | Error/syntax improvement                       |
 | alt + Space              | Definition                                     |
