@@ -493,3 +493,13 @@ Tables:             https://www.tablesgenerator.com/markdown_tables
 Reliable sites: mkyong, baeldung
 Note: When dealing with finance/money - leave values as integers, and when displaying, divide by 100.
 ---
+
+```java
+"/".equals(stringRep);
+```
+
+is null safe-er than
+
+```java
+stringRep.equals("/")
+```
