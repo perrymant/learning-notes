@@ -2,7 +2,7 @@
 
 Java provides Collection Framework which defines several classes and interfaces to represent a group of objects as a single unit.
 
-The Collection interface (java.util.Collection) and Map interface (java.util.Map) are two main root interfaces of Java collection classes.
+The Collection interface (`java.util.Collection`) and Map interface (`java.util.Map`) are two main root interfaces of Java collection classes.
 
 `Hierarchy of Collection Framework` (core interfaces only)
 
@@ -42,3 +42,11 @@ Map : Contains Key value pairs. Doesn't allow duplicate keys.  Example
 The difference between Set and Map interface is, in Set we have only
 keys, but in Map, we have key value pairs.
 ```
+
+## Most common implementations
+
+The following are good go-to implementations that will work well 99% of the time.
+
+- `Set` -> `HashSet`
+- `List` -> `ArrayList`
+- `Map` -> `HashMap`
