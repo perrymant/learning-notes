@@ -76,6 +76,7 @@ public void FindUniqueElementTest() {
     assertEquals(1.0, FindUniqueElement.finder(new double[]{0.0, 0.0, 3.0, 0.0}), 0.0000000000001 );
 }
 ```
-
-*Refactoring = amplify clarity of intent while minimizing duplication.*
 Refactor after you have a passing test.
+
+> *Refactoring = amplify clarity of intent while minimizing duplication.*
+  - Lasse Koskela
