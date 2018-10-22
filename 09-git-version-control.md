@@ -1,4 +1,23 @@
-# Git
+# Git Version Control
+Version Control is useful because:
+- it's a system that records changes to a file or set of files over time so that you can recall specific versions later.
+- important for documents that undergo a lot of revision and redrafting and is particularly important for code files because they can easily be changed by a number of different users.
+- good for collaboration
+- good for backup
+
+## Common Git Commands
+| Command                                    | What it does                                     |
+|--------------------------------------------|--------------------------------------------------|
+| `git clone <site info>`                    | Clone a remote repo to local                     |
+| `git pull`                                 | Fetch from remote repo to local branch           |
+| `git status`                               | Show the working tree status                     |
+| `git add .`                                | Add all files that have changes to staging       |
+| `git commit -m "your message goes here"`   | Make a commit and add message                    |
+| `git push`                                 | Send local commit to remote                      |
+| `git checkout master`                      | Look at your master branch                       |
+| `git checkout <branch-name>`               | Look at a branch                                 |
+| `git diff --cached`                        | See what's in the cached area (prior to staging) |
+| `git reset --hard`                         | delete all branch progress                       |
 
 ## Merge conflicts
 
