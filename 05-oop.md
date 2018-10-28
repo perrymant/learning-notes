@@ -42,7 +42,7 @@ public abstract class SuperClass {
  }
 ```
 
-## `Interfaces:`
+## `interface`s:
 
 - Keyword `interface` is used instead of `class`
 - Must be `public` or package-private

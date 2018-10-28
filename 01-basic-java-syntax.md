@@ -182,7 +182,7 @@ A lot of the time you can get away with not using the `this.` prefix. It's up to
 
 #### TIP: Keep your constructors safe.
 
-You will occasionally have to write code that might not work, based on some external factors (e.g. the computer you're currently using, the input parameters of your method etc.). Avoid this type of code in constructors, as this is bad design. It's a clear sign that the constructor is doing more than just setting up it's initial state. (e.g. making database connections). It's better to only do part of the initialisation in a constructor, and do the more dangerous initialisation in a separate method.
+You will occasionally have to write code that might not work, based on some external factors (e.g. the computer you're currently using, the input parameters of your method etc.) Avoid this type of code in constructors, as this is bad design. It's a clear sign that the constructor is doing more than just setting up it's initial state. (e.g. making database connections). It's better to only do part of the initialisation in a constructor, and do the more dangerous initialisation in a separate method.
 
 *Example:*
 
