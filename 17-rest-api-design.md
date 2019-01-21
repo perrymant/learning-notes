@@ -143,14 +143,14 @@ Rule: `OPTIONS` should be used to retrieve metadata that describes a resource’
 
 
 ## Glossary:
-- `API`:
+- `API`: Application Programming Interface
 - `Cache`: REST constraints that enable network-based intermediaries to hold on to resource state repre- sentations, which helps web servers meet the demands of their clients.
 - `CRUD`: the four classic storage-oriented functions: create, retrieve, update, and delete.
 - `Hypermedia`: An extension of hypertext that enables multiple formats to be combined and tethered together with links to design a multi-media information network.
 - `HyperText Mark-up Language (HTML)`: to represent informative documents that contain links to related documents.
 - `HyperText Transfer Protocol (HTTP)`: a message-based language that computers could use to communicate over the Internet.
-- `Load balancing`:
-- `Response caching`:
+- `Load balancing`: efficiently distributing incoming network traffic across a group of backend servers.
+- `Response caching`: Caching the server response of a client request for future requests, in order to reduce the number of requests a client or proxy makes to a web server.
 - `REST`: Representational State Transfer
 - `REST API`: A web service interface that conforms to the Web’s architectural style.
 - `Richardson Maturity Model`: three distinct levels of REST API maturity, which can help evaluate and concisely communicate the RESTfulness of many Web API designs. Each level corresponds with an aspect of the Web’s uniform interface that an API must embrace in order to be considered RESTful:

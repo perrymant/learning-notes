@@ -80,3 +80,9 @@ Refactor after you have a passing test.
 
 > *Refactoring = amplify clarity of intent while minimizing duplication.*
   - Lasse Koskela
+
+## Different Levels of Testing
+1. Unit testing
+2. Component testing
+3. Integration testing
+4. System testing
