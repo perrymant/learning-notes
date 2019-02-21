@@ -1,4 +1,4 @@
-# SOLID Principals:
+# SOLID Principles:
 
 1. **S**ingle Responsibility Principle **Most important**.
 > A class or module should have one, and only one, reason to be changed.

@@ -18,7 +18,7 @@ Stereotype Annotations:
                        +-------^------+
          +--------------------/|\-----------------------+
          |                     |                        |
-+--------\--------+     +------|------+     +-----------|---------+
++--------|--------+     +------|------+     +-----------|---------+
 |   @Controller   |     |  @Service   |     |     @Repository     |
 |  (presentation) |     |  (service)  |     |  (persistance/DAO)  |
 +-----------------+     +-------------+     +---------------------+
@@ -28,7 +28,7 @@ Stereotype Annotations:
     - `@Service`:  this handles the business logic.
     - `@Repository`: used to access the database.
 - Spring Web Annotations:
-    - `@RestController`: combines `@Controller` and `@ResponseBody`.
+    - `@RestController`: combines `@Controller` and `@ResponseBody`, this results in web requests returning data rather than a view.
     - `@RequestMapping`: used both at class and method level. `@RequestMapping` maps all HTTP operations by default; In order to specify this mapping `@RequestMapping(method=GET)` can be used and further configuration and specification is possible using path & compatible HTTP methods such as in the following example: `@RequestMapping(value = "/guitars/fender", method = RequestMethod.GET)`
     - This will create an endpoint at the location: `http://localhost:8080/guitars/fender` that listens to a `GET` request.
     - Additionally, it can be very useful to generate a JSON response from a method that returns a string: `@GetMapping(value = "/report", produces = "application/json; charset=utf-8")`.
@@ -109,5 +109,73 @@ public class HelloController {
 The returned string can be accessed via: `http://localhost:8080/hello`.
 
 # Todo:
-- POJO -> JSON (and vice versa)
+
 - use of `postman`
+
+https://spring.io/guides/gs/spring-boot/
+
+## POJO -> JSON (and vice versa)
+```java
+@RestController
+public class CarController {
+
+    @GetMapping("/api/car/1")
+    public Car getCar() {
+        return makeCar();
+    }
+
+     private Car makeCar() {
+        final Car car = new Car();
+        car.setId(1);
+        car.setColour(Colour.METALLIC_WHITE);
+        car.setModel("Toyota Prius");
+        car.setEngineDetails(makeEngineDetails());
+        car.getCds().add(makeCD());
+        return car;
+    }
+
+    private Car.CD makeCD() {
+        Car.CD cd = new Car.CD();
+        cd.setArtist("Metallica");
+        cd.setSongCount(13);
+        return cd;
+    }
+
+        private Car.EngineDetails makeEngineDetails() {
+        Car.EngineDetails engineDetails = new Car.EngineDetails();
+        engineDetails.setHorsepower(2134);
+        engineDetails.setManufacturer("Rolls Royce");
+        return engineDetails;
+    }
+}
+
+class Car {
+    private long id;
+    private int wheels;
+    @JsonInclude(JsonInclude.Include.NON_ABSENT)
+    private String model;
+}
+```
+
+
+## JSONPath Syntax
+http://jsonpath.com/
+
+| XPath | JSONPath         | Description                                                                                                                                       |
+|-------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| /     | $                | the root object/element                                                                                                                           |
+| .     | @                | the current object/element                                                                                                                        |
+| /     | . or []          | child operator                                                                                                                                    |
+| ..    | n/a              | parent operator                                                                                                                                   |
+| //    | ..               | recursive descent. JSONPath borrows this syntax from E4X.                                                                                         |
+| *     | *                | wildcard. All objects/elements regardless their names.                                                                                            |
+| @     | n/a              | attribute access. JSON structures don't have attributes.                                                                                          |
+| []    | []               | subscript operator. XPath uses it to iterate over element collections and for predicates. In Javascript and JSON it is the native array operator. |
+| |     | [,]              | Union operator in XPath results in a combination of node sets. JSONPath allows alternate names or array indices as a set.                         |
+| n/a   | [start:end:step] | array slice operator borrowed from ES4.                                                                                                           |
+| []    | ?()              | applies a filter (script) expression.                                                                                                             |
+| n/a   | ()               | script expression, using the underlying script engine.                                                                                            |
+| ()    | n/a              | grouping in Xpath                                                                                                                                 |
+
+## Examples of JSONPath Syntax
+
