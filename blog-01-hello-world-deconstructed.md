@@ -11,7 +11,7 @@ public class HelloWorld {
 ```
 
 We can annotate and ennumerate each term to make reffering to the components more obvious:
-![Annotated Code](./assets/blog-01-hello-world-deconstructed.png =100x20)
+![Annotated Code](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/helloworld.png)
 
 
 It's often noted that Java is overly verbose and is composed by a lot of `boilerplate` code, that is to say, template-like code that must be included for the desired code to run. In this example, the first two lines are boilerplate as they are not directly concerned with what we want to achieve - which is to simply display the phrase "Hello World!" to the person operating the computer, which is what the third line does. Part of the reason for this level of verbosity is due to the fact that Java is forcing you to adopt the `Object Oriented Programming` paradigm, in which a program seeks to represent the real-world as a set of `objects`.
@@ -49,8 +49,7 @@ So you see how each class is contained in it's own file, and the class and filen
 
 The first term in our main example is where things get a little trickier. A class has a `modifier`, which in our case is `public`. `public` is fairly self-descriptive in that it makes the class publicly availiable to other classes. If you're not sure what that means, then we need to examine
 
-![Modifiers](./assets/blog-01-hello-world-deconstructed/accessmod.png =200x200)
-
+![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/accessmod.png)
 [credit](https://stackoverflow.com/a/215505)
 
 An important thing to note is that a file may only have one `public class`.
@@ -59,8 +58,10 @@ Information hiding, or encapsulation
 
 Packages are used for organising related classes .
 To put a class in a package, you need to add the line
-`package *packagename*;`
+`package `*packagename*`;`
 as the very first instruction in the source file. Typically you will see these in a format that has one or more identifiers separated by periods such as `java.util.random` This format for
+
+![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/iceberg.png)
 
 When no named package statements are included in a source file, then the classes will be placed in the *default package*.
 
