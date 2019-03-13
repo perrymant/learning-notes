@@ -7,33 +7,32 @@ import java.util.List;
 import java.util.Set;
 
 public class EconomistObserverDemo {
-    public static void main(String[] args) {
-        Economist economist = new Economist();
-        List<Subscriber> subscriptionList = Arrays.asList(
-            new OnlineSubscription(economist), 
-            new MobileSubscription(economist),
-            new PhysicalSubscription(economist),
-            new OnlineSubscription(economist), 
-            new MobileSubscription(economist)
-        );
+    private static final Economist ECONOMIST = new Economist();
+    private static final List<Subscriber> subscriptionList = Arrays.asList(
+        new OnlineSubscription(ECONOMIST), 
+        new MobileSubscription(ECONOMIST),
+        new PhysicalSubscription(ECONOMIST),
+        new OnlineSubscription(ECONOMIST), 
+        new MobileSubscription(ECONOMIST)
+    );
 
+    public static void main(String[] args) {
         for (int i = 0; i < 15; i++) {
             economist.onEvent(new Publication());
-            try {
-                Thread.sleep(3_000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            hangOn();
+        }
+    }
+
+    private static void hangOn() {
+        try {
+            Thread.sleep(3_000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
 
 class Publication {
-
-    Publication() {
-        System.out.println("A new set of reviews for the subscribers of magazines at: " 
-        + new Timestamp(new Date().getTime()));
-    }
 }
 
 class Economist {
@@ -61,7 +60,7 @@ class OnlineSubscription implements Subscriber {
 
     @Override
     public void notify(final Publication ev) {
-        System.out.println(OnlineSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+        System.out.println("Online Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
 
@@ -72,7 +71,7 @@ class PhysicalSubscription implements Subscriber {
 
     @Override
     public void notify(final Publication ev) {
-        System.out.println(PhysicalSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+        System.out.println("Physical Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
 
@@ -83,6 +82,6 @@ class MobileSubscription implements Subscriber {
 
     @Override
     public void notify(final Publication ev) {
-        System.out.println(MobileSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+        System.out.println("Mobile Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
