@@ -1,45 +1,38 @@
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class EconomistObserverDemo {
     public static void main(String[] args) {
         Economist economist = new Economist();
-        Subscriber onlineSubscriber01 = new OnlineSubscription(economist);
-        Subscriber mobileSubscriber01 = new MobileSubscription(economist);
-        Subscriber physicalSubscriber01 = new PhysicalSubscription(economist);
-        Subscriber onlineSubscriber02 = new OnlineSubscription(economist);
-        Subscriber mobileSubscriber02 = new MobileSubscription(economist);
-        Subscriber physicalSubscriber02 = new PhysicalSubscription(economist);
-        Subscriber onlineSubscriber03 = new OnlineSubscription(economist);
-        Subscriber mobileSubscriber03 = new MobileSubscription(economist);
-        Subscriber physicalSubscriber03 = new PhysicalSubscription(economist);
-        Subscriber onlineSubscriber04 = new OnlineSubscription(economist);
-        Subscriber mobileSubscriber04 = new MobileSubscription(economist);
-        Subscriber physicalSubscriber04 = new PhysicalSubscription(economist);
-        Subscriber onlineSubscriber05 = new OnlineSubscription(economist);
-        Subscriber mobileSubscriber05 = new MobileSubscription(economist);
-        Subscriber physicalSubscriber05 = new PhysicalSubscription(economist);
+        List<Subscriber> subscriptionList = Arrays.asList(
+            new OnlineSubscription(economist), 
+            new MobileSubscription(economist),
+            new PhysicalSubscription(economist),
+            new OnlineSubscription(economist), 
+            new MobileSubscription(economist)
+        );
+
         for (int i = 0; i < 15; i++) {
-            economist.onEvent(new Event());
+            economist.onEvent(new Publication());
             try {
-                int waitTime = 3000;
-                Thread.sleep(waitTime);
+                Thread.sleep(3_000);
             } catch (InterruptedException e) {
-                System.out.println(e);
+                throw new RuntimeException(e);
             }
         }
     }
 }
 
-class Event {
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+class Publication {
 
-    Event() {
-        Date date = new Date();
-        System.out.println("\nA new set of reviews for the subscribers of magazines at: " + new Timestamp(date.getTime()));
+    Publication() {
+        System.out.println("A new set of reviews for the subscribers of magazines at: " 
+        + new Timestamp(new Date().getTime()));
     }
 }
 
@@ -50,7 +43,7 @@ class Economist {
         subscribers.add(subscriber);
     }
 
-    void onEvent(Event ev) {
+    void onEvent(Publication ev) {
         for (Subscriber ob : subscribers) {
             ob.notify(ev);
         }
@@ -58,16 +51,7 @@ class Economist {
 }
 
 interface Subscriber {
-    void notify(Event ev);
-}
-
-class SubscriberRating {
-    int getRand() {
-        int min = 1;
-        int max = 6;
-        int range = max - min + 1;
-        return (int) (Math.random() * range) + min;
-    }
+    void notify(Publication ev);
 }
 
 class OnlineSubscription implements Subscriber {
@@ -76,9 +60,8 @@ class OnlineSubscription implements Subscriber {
     }
 
     @Override
-    public void notify(final Event ev) {
-        SubscriberRating subscriberRating = new SubscriberRating();
-        System.out.println(OnlineSubscription.class.getName() + " of the Economist gives a rating: " + subscriberRating.getRand());
+    public void notify(final Publication ev) {
+        System.out.println(OnlineSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
 
@@ -88,9 +71,8 @@ class PhysicalSubscription implements Subscriber {
     }
 
     @Override
-    public void notify(final Event ev) {
-        SubscriberRating subscriberRating = new SubscriberRating();
-        System.out.println(PhysicalSubscription.class.getName() + " of the Economist gives a rating: " + subscriberRating.getRand());
+    public void notify(final Publication ev) {
+        System.out.println(PhysicalSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
 
@@ -100,8 +82,7 @@ class MobileSubscription implements Subscriber {
     }
 
     @Override
-    public void notify(final Event ev) {
-        SubscriberRating subscriberRating = new SubscriberRating();
-        System.out.println(MobileSubscription.class.getName() + " of the Economist gives a rating: " + subscriberRating.getRand());
+    public void notify(final Publication ev) {
+        System.out.println(MobileSubscription.class.getName() + " of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
     }
 }
