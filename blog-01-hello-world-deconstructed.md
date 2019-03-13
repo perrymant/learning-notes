@@ -42,28 +42,87 @@ We've just made a `Frog class` and a `Fly class`! Notice the initial capital let
 |                    |     |                             |
 +--------------------+     +-----------------------------+
 ```
-So you see how each class is contained in it's own file, and the class and filename are the same. This is useful because it keeps everything that is specific to the `Frog` in one place, and everything that is specific to the `Fly` in it's own place, which can help us out in the long run by making our overall program more navigatable and readable. I've also taken the liberty to give the `Frog` the attribute of two `eyes`, and I've given the `Fly` the `iritateHuman()` (sic) behaviour.
+I've taken the liberty to give the `Frog` the attribute of two `eyes`, and I've given the `Fly` the `iritateHuman()` (sic) behaviour. So you see how each class is contained in it's own file, and the class and filename are the same. This is useful because it keeps everything that is specific to the `Frog` in one place, and everything that is specific to the `Fly` in it's own place, which can help us out in the long run by making our overall program more navigatable and readable. This concept is refered to as `encapsulation`, allowing these related ideas to be put together into one unit.
+![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/encapsulate.jpg)
+This image shows multiple levels of encapsulation: the powered medicine is encapsulated in the pill, and the pills are encapsulated in the pill bottle.
 
 ## Term 1: `public`
 
-The first term in our main example is where things get a little trickier. A class has an `access modifier`, which in our case is `public`. Besides the `public` modifier, there is also `private`, `protected` and the `package-private` modifier. This last one is the default modifier, that is to say that when you don't add any of the other modifier keywords, then the class is automatically designated as `package-private`, which is what the example `Frog` class above is. The access modifiers `public` is fairly self-descriptive in that it makes the class publicly availiable to other classes.
+Classes provide an opportunity to bring together all the low-level components (the attributes and behaviour) that **should** fit together. Sometimes we'll want to permit these low-level components to have inter-class communication, and sometimes we'll want to restrict this.
+
+The first term in our main example is where things get a little trickier. A class has an `access modifier`, which in our case is `public`. Besides the `public` modifier, there is also `private`, `protected` and the `package-private` modifier. This last one is the default modifier, that is to say that when you don't add any of the other modifier keywords, then the class is automatically designated as `package-private`, which is what the example `Frog` class above is. These access modifiers apply not only to classes, but also to methods, constructors and data members.
 
 ![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/accessmod.png)
 [credit](https://stackoverflow.com/a/215505)
 
-An important thing to note is that a file may only have one `public class`.
+#### 1. `public` access modifier
 
-Packages are used for organising related classes .
-To put a class in a package, you need to add the line
+The access modifier `public` is fairly self-descriptive in that it makes the class publicly availiable to other classes.
 
+An important thing to note is that a file may only have one `public class`. So it's OK to have other classes in the file, just as long as they have a different access modifier, which means I can put in a `private` class called `FrogFeed` in the same file as the `Frog`:
+```
++---Frog.java---------------+
+|                           |
+|  public class Frog {      |
+|  }                        |
+|                           |
+|  private class FrogFeed { |
+|  }                        |
++---------------------------+
+```
+#### 2. `protected` access modifier
+
+The `protected` acces modifier can't actually be applied to classes, but it can be used with methods, constructors and data members, so we'll look at it here, and start by understanding how we organise classes in packages and files.
+
+The way we organise our classes is through files, packages and folders. We've already seen how .java files contain the classes, and you're probably familiar with folders (or directories) because your computer's Operating System uses these to create a hierarchy for storing files. Packages are exactly the same as folders, with the only difference being that they are the folders within the `src` folder:
+```
+Documents
+└── pizzeria                                <- folder
+    └── src                                 <- folder
+        └── com                             <- package
+            └── example                     <- package
+                ├── appliances              <- package
+                │   ├── Oven.java
+                │   └── Refrigerator.java
+                ├── food                    <- package
+                │   ├── Antipasti.java
+                │   ├── Pasta.java
+                │   ├── Pizza.java
+                │   └── ingredients         <- package
+                │       ├── Cheese.java
+                │       ├── Flour.java
+                │       └── Tomato.java
+                └── restaurant              <- package
+                    ├── Kitchen.java
+                    └── Toilet.java
+```
+Packages are used for organising related classes, and to put a class in a package, you need to add the line
 `package `*packagename*`;`
+as the very first instruction in the source file. Typically you will see these in a format that has one or more identifiers separated by periods such as `java.util.random`. The naming format here is trying to make sure that each name is unique, so as to avoid namespace collisions and is the same as with import naming. For example, if I wanted to make use of the class `List`, I would find that there are quite a few:
+![Namespace](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/namespace.png)
+*which one do I want?* I have to specify, and this reversed naming format helps keep all of these classes and packages separate.
 
+When the `protected` access modifier is used, it signals that the method, constructors or data member is accessible both within and outside the package but through inheritance only.
 
-as the very first instruction in the source file. Typically you will see these in a format that has one or more identifiers separated by periods such as `java.util.random` This format for
+#### 3. `package private` access modifier
 
-![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/iceberg.png)
-Information hiding, or encapsulation
-When no named package statements are included in a source file, then the classes will be placed in the *default package*.
+When no named package statements are included in a source file, then the classes will be placed in the *default package*. The default modifier is accessible only within package.
+
+```
+    ├── food                    <- package
+    │   ├── Antipasti.java
+    │   ├── Pasta.java
+    │   ├── Pizza.java
+    │   └── ingredients         <- package
+    │       ├── Cheese.java
+    │       ├── Flour.java
+    │       └── Tomato.java
+```
+#### 4. `private` access modifier
+
+![Iceberg](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/iceberg.png)
+- gives us the uportunity to permit or deny the linking of low-level components with each other.
+- `encapsulation`, `information hiding` and `abstraction`
 
 ## Term 3: The name of the class
 
@@ -137,7 +196,7 @@ In order to pass in your own program arguments with an IDE (here shown with Inte
 
 Next we look at `System.out.println()`, which can be broken into 3 parts. `System` is a class (a clue for why this is the case comes from the naming convention that states that all classes should start with a capital letter) that is automatically included into all Java projects, and it belongs to the package called `java.lang`. It turns out that there are three packages that are automatically imported into a Java project: First, the package with no name. Second, the `java.lang` package. And third, the current package (the package in which the current file is defined). Furthermore, System is a `final` class, which prevents inheritance and means that this class cannot be used as a base class to derive other classes. The `System` class provides many facilities such as standard input, standard output, and error output streams; access to externally defined properties and environment and a means of loading files and libraries.
 
-## Term 11: the field `out`
+## Term 11: The field `out`
 
 `out` is a `field` of type PrintStream declared in the System class. The declaration for this field explains that:
 ```java
