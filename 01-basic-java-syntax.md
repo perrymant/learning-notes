@@ -113,7 +113,7 @@ The Human class declares two fields: name and age. The `name` field is declared 
 ```java
 class Human {
         String name;        // An instance variable
-        int age;         // An instance variable
+        int age;            // An instance variable
         static long count;  // A static field because of the static modifier
 }
 ```

@@ -31,3 +31,7 @@ Code blocks in for/if statements can be made to be one line long - just the name
 - A PR should be approved by a reviewer before merging
 - Re-add reviewers after addressing review comments
 - design should be solid before implementing
+
+Refactoring blog post ideas:
+- DRY
+- Don't change the semantics (the intention or meaning) of a feature

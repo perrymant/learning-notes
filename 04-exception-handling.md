@@ -67,3 +67,11 @@ Checked exception: caught as low as possible
 Unchecked can be caught close to `main()` level.
 
 *Pro tip: Don't ever throw exceptions in your constructor. It's a sign that the constructor is doing more than just setting up it's initial state. (e.g. making database connections).*
+
+For tests it's OK to throws Exception always, even if it doesn't throw anything. Ideally the code you invoke doesn't throw checked exceptions, however sometimes (like this time) you have to use third-party libraries that don't agree with that philosophy.
+
+`e.printStackTrace();` bad, `throw new RuntimeException(e)` good.
+
+} catch (Exception e) {
+    throw new subclass of RuntimeException(e);
+}
