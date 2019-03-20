@@ -18,14 +18,14 @@ public class EconomistObserverDemo {
 
     public static void main(String[] args) {
         for (int i = 0; i < 15; i++) {
-            economist.onEvent(new Publication());
+            ECONOMIST.onEvent(new Publication(SubscriptionType.MOBILE));
             hangOn();
         }
     }
 
     private static void hangOn() {
         try {
-            Thread.sleep(3_000);
+            Thread.sleep(3_0);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -33,6 +33,15 @@ public class EconomistObserverDemo {
 }
 
 class Publication {
+    SubscriptionType subscriptionType;
+    
+    Publication(SubscriptionType type){
+        subscriptionType = type;
+    }
+}
+
+enum SubscriptionType {
+    ONLINE, MOBILE, PHYSICAL;
 }
 
 class Economist {
@@ -59,8 +68,10 @@ class OnlineSubscription implements Subscriber {
     }
 
     @Override
-    public void notify(final Publication ev) {
-        System.out.println("Online Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+    public void notify(final Publication publication) {
+        if (publication.subscriptionType == SubscriptionType.ONLINE){
+            System.out.println("Online Subscription of the Economist gives a rating: " + (int)((Math.random() * 6) + 1));
+        }
     }
 }
 
@@ -71,7 +82,7 @@ class PhysicalSubscription implements Subscriber {
 
     @Override
     public void notify(final Publication ev) {
-        System.out.println("Physical Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+        System.out.println("Physical Subscription of the Economist gives a rating: " + (int) ((Math.random() * 6) + 1));
     }
 }
 
@@ -81,7 +92,9 @@ class MobileSubscription implements Subscriber {
     }
 
     @Override
-    public void notify(final Publication ev) {
-        System.out.println("Mobile Subscription of the Economist gives a rating: " + (int) (Math.random() * 6) + 1);
+    public void notify(final Publication publication) {
+        if (publication.subscriptionType != SubscriptionType.PHYSICAL){
+            System.out.println("Mobile Subscription of the Economist gives a rating: " + (int) ((Math.random() * 6) + 1));
+        }
     }
 }
