@@ -1,33 +1,22 @@
-import java.util.stream.IntStream;
-
 class MissingNumber {
-    public static void main(String[] args) {
-    }
 
-
-    int[] createArray(int range, int randomNumber) {
-        int[] arrStart = IntStream.range(1, randomNumber).toArray();
-        int[] arrEnd = IntStream.range(randomNumber + 1, range + 1).toArray();
-        int[] arr = new int[arrStart.length + arrEnd.length];
-        System.arraycopy(arrStart, 0, arr, 0, arrStart.length);
-        System.arraycopy(arrEnd, 0, arr, arrStart.length, arrEnd.length);
-        return arr;
-    }
-
-    int search(int[] arr, int lowI, int highI) {
-        int midI = (lowI + highI) / 2;
-        int midVal = arr[midI];
-        if (lowI == highI) {
-            if (midVal == midI + 1) {
-                return midVal;
+    int findMissingNumber(int[] arr, int lowIndex, int highIndex) {
+        // find the value of the midIndex of the array
+        final int midIndex = (lowIndex + highIndex) / 2;
+        final int midValue = arr[midIndex];
+        // check if we've narrowed down to just 1 value in the array
+        if (lowIndex == highIndex) {
+            if (midValue == midIndex + 1) {
+                return midValue;
             }
-            return midVal - 1;
+            return midValue - 1;
         }
-        if (midVal == midI + 1) {
-            lowI = midI + 1;
-            return search(arr, lowI, highI);
+        if (midValue == midIndex + 1) {
+            // update lower bound
+            return findMissingNumber(arr, midIndex + 1, highIndex);
         }
-        highI = midI;
-        return search(arr, lowI, highI);
+        // update upper bound
+        highIndex = midIndex;
+        return findMissingNumber(arr, lowIndex, highIndex);
     }
 }
