@@ -1,11 +1,11 @@
-# Hello World! Deconstructed
+# Hello, World! Deconstructed
 
-Have you ever tried writing out a standalone "Hello World!" program in Java, away from an IDE, and instead on a piece of paper or a whiteboard? Go ahead and give it a go if you've never done it before. Go on. I dare you, I double dare you m... (you know what, I'm going to spare you the rest of the Pulp Fiction quote!) Writing it out by hand turns out to be quite a good bit of practice if you're new to Java. Furthermore, making sure you understand each and every term in this simple program is very important if you wish to use Java, as they lay the foundation for much of the concepts you will see in pretty much every Java program out there. Let's get stuck in and see if we can deconstruct each term in a meaningful manner, but also realise that there is a lot going on that you probably take for granted as well. Let's start by taking a look at the program as a whole:
+Have you ever tried writing out a standalone "Hello, World!" program in Java, away from an IDE, and instead on a piece of paper or a whiteboard? Go ahead and give it a go if you've never done it before. Go on. I dare you, I double dare you m... (you know what, I'm going to spare you the rest of the Pulp Fiction quote!) Writing it out by hand turns out to be quite a good bit of practice if you're new to Java. Furthermore, making sure you understand each and every term in this simple program is very important if you wish to use Java, as they lay the foundation for much of the concepts you will see in pretty much every Java program out there. Let's get stuck in and see if we can deconstruct each term in a meaningful manner, but also realise that there is a lot going on that you probably take for granted as well. Let's start by taking a look at the program as a whole:
 
 ```java
 public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello, World!");
     }
 }
 ```
@@ -13,7 +13,7 @@ public class HelloWorld {
 We can ennumerate and annotate each term to make reffering to the components more obvious:
 ![Annotated Code](assets/blog-01-hello-world-deconstructed/helloworld.png)
 
-It's often noted that Java is overly verbose and is composed by a lot of `boilerplate` code, that is to say, template-like code that must be included for the desired code to run. In this example, the first two lines are boilerplate as they are not directly concerned with what we want to achieve - which is to simply display the phrase "Hello World!" to the person operating the computer, which is what the third line does. Part of the reason for this level of verbosity is due to the fact that Java is forcing you to adopt the `Object Oriented Programming` paradigm, in which a program seeks to represent the real-world as a set of `objects`.
+It's often noted that Java is overly verbose and is composed by a lot of `boilerplate` code, that is to say, template-like code that must be included for the desired code to run. In this example, the first two lines are boilerplate as they are not directly concerned with what we want to achieve - which is to simply display the phrase "Hello, World!" to the person operating the computer, which is what the third line does. Part of the reason for this level of verbosity is due to the fact that Java is forcing you to adopt the `Object Oriented Programming` paradigm, in which a program seeks to represent the real-world as a set of `objects`.
 
 ## Term 2: `class`
 
@@ -183,7 +183,7 @@ public class HelloWorld {
     }
 
     private void arrayDemonstrator() {
-        String[] contents = new String[]{"Hello", "world"};
+        String[] contents = new String[]{"Hello", "World"};
         System.out.println("The contents of contents is: " + Arrays.toString(contents));
         System.out.println("The length of contents is: " + contents.length);
         System.out.println("The zeroth index of contents is: " + contents[0]);
@@ -192,7 +192,7 @@ public class HelloWorld {
 ```
 Which will print out:
 ```
-The contents of args is: [Hello, world]
+The contents of args is: [Hello, World]
 The length of args is: 2
 The zeroth index of args is: Hello
 ```
@@ -258,13 +258,13 @@ class PrintStream{
 ```
 The purpose of `println("...")` is to print the string "..." and then to move the cursor to a new line.
 
-## Term 13: The string `"Hello World!"`
+## Term 13: The string `"Hello, World!"`
 We've finally got here - this is the actual part of the program that we wanted to see all along, and ut took all the rest of the code to get us here. In Java, a `String` (notice the initial capital letter) is an `object` rather than a `primitive` (such as `int`, `boolean` and `double`), and is so commonly used that it's a little special. One thing that makes it special is that it's `immutable`, which means that once it has been created, a String object cannot be change. Normally, `objects` need to be instantiated in this way
 ```java
 Frog frog = new Frog();
 ```
-but javawith Strings, this is not neccessary (you can instantiate them like the above way, but that is rarely done), instead we can assign a String like this:
-```
+but with Strings, this is not neccessary (you can instantiate them like the above way, but that is rarely done), instead we can assign a String like this:
+```java
 String variableName = "The String we want to store";
 ```
 If you look at the `declaration` of the String class, you can see that under the hood, the implementation of a String is done using an array of characters, and that String objects have many methods available that the primitives do not have:
@@ -280,11 +280,11 @@ public final class String
 
 So how do we run this program from the command line? The first step is to compile the program, which is done using the command `javac` followed by the name of the file we wish to compile. Upon successful compilation, we may run the program using the `java` command, followed by the name of the program we just compiled (no extension required this time):
 
-```bash
+```sh
 $ javac HelloWorld.java
 
 $ java HelloWorld
-Hello World
+Hello, World!
 ```
 
-Goodbye world!
+Goodbye, World!
