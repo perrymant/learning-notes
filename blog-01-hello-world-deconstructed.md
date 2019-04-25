@@ -31,7 +31,7 @@ class Fly {
 }
 ```
 We've just made a `Frog class` and a `Fly class`! Notice the initial capital letter - another Java naming convention that we must adhere to for class names. Also notice that the words used for classes should be nouns, as they describe either a person, entity, thing, or idea. You can work out from this that in our main example, we have a `class` called `HelloWorld`, indicated by the third term. In fact, not only is the class called `HelloWorld`, the file that this bit of code lives in **HAS** to be called `HelloWorld.java`. We'll see in a moment exactly why this has to be the case for our example, but typically, each file will just have one class in it, and the name of the file and the class must be the same (of course, the file will also include the .java extension). So with our `Frog` and `Fly` classes, the file and class structure will look like this:
-```
+```java
 +---Frog.java--------+     +---Fly.java------------------+
 |                    |     |                             |
 |  class Frog {      |     |  class Fly {                |
@@ -60,7 +60,7 @@ The first term in our main example is where things get a little trickier. A clas
 The access modifier `public` is fairly self-descriptive in that it makes the class publicly availiable to other classes.
 
 An important thing to note is that a file may only have one `public class`. So it's OK to have other classes in the file, just as long as they have a different access modifier, which means I can put in a `private` class called `FrogFeed` in the same file as the `Frog`:
-```
+```java
 +---Frog.java---------------+
 |                           |
 |  public class Frog {      |
@@ -75,7 +75,7 @@ An important thing to note is that a file may only have one `public class`. So i
 The `protected` acces modifier can't actually be applied to classes, but it can be used with methods, constructors and data members, so we'll look at it here, and start by understanding how we organise classes in packages and files.
 
 The way we organise our classes is through files, packages and folders. We've already seen how .java files contain the classes, and you're probably familiar with folders (or directories) because your computer's Operating System uses these to create a hierarchy for storing files. Packages are exactly the same as folders, with the only difference being that they are the folders within the `src` folder:
-```
+```java
 Documents
 └── pizzeria                                <- folder
     └── src                                 <- folder
@@ -97,7 +97,9 @@ Documents
                     └── Toilet.java
 ```
 Packages are used for organising related classes, and to put a class in a package, you need to add the line
+
 `package `*packagename*`;`
+
 as the very first instruction in the source file. Typically you will see these in a format that has one or more identifiers separated by periods such as `java.util.random`. The naming format here is trying to make sure that each name is unique, so as to avoid namespace collisions and is the same as with import naming. For example, if I wanted to make use of the class `List`, I would find that there are quite a few:
 ![Namespace](assets/blog-01-hello-world-deconstructed/namespace.png)
 *which one do I want?* I have to specify, and this reversed naming format helps keep all of these classes and packages separate.
@@ -108,7 +110,7 @@ When the `protected` access modifier is used, it signals that the method, constr
 
 When no named package statements are included in a source file, then the classes will be placed in the *default package*. The default modifier is accessible only within package.
 
-```
+```java
     ├── food                    <- package
     │   ├── Antipasti.java
     │   ├── Pasta.java
@@ -123,11 +125,30 @@ If all the classes in the above situation were given the `package private` acces
 
 #### 4. `private` access modifier
 
-The `private` access modifier gives us the uportunity to permit or deny the linking of low-level components with each other.
+The `private` access modifier gives us the uportunity to permit or deny the linking of low-level components with each other, and is more often found on fields and methods, rather than on classes. A field or method that is marked as private will only allow code inside the same class to access the field, or call the method - it keeps everything very contained in the class. This means that code inside subclasses or external classes cannot access the fields or methods that are designated as `private`.
 
-- TODO: description and example
+```java
++-----------------TronaldDump.java-----------------+
+|                                                  |
+|    private String thoughts = "";                 |
+|                                                  |
+|    public String getThoughts() {                 |
+|        return thoughts;                          |
+|    }                                             |
+|                                                  |
+|    public void setThoughts(String thoughts) {    |
+|        this.thoughts = thoughts;                 |
+|    }                                             |
+|                                                  |
++--------------------------------------------------+
+```
+
+- TODO: getters and setters
 ![Iceberg](assets/blog-01-hello-world-deconstructed/iceberg.png)
-- TODO: difference between `encapsulation`, `information hiding` and `abstraction`
+- TODO: reason for encapsulation
+- encapsulation: hide the implementation details from users.
+
+Note that you can't make your Main class private as it would render it inaccessible, preventing the program from having an entrypoint and making it unuseable.
 
 ## Term 3: The name of the class
 
@@ -194,6 +215,7 @@ it would would output:
 Hello John Smith
 The args array contains: [John, Smith]
 ```
+
 In order to pass in your own program arguments with an IDE (here shown with IntelliJ), update your `program arguments` in the "edit configurations..." window:
 ![Program Arguments](assets/blog-01-hello-world-deconstructed/arguments.png)
 
