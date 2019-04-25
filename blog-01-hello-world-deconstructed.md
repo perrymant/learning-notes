@@ -11,7 +11,7 @@ public class HelloWorld {
 ```
 
 We can ennumerate and annotate each term to make reffering to the components more obvious:
-![Annotated Code](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/helloworld.png)
+![Annotated Code](assets/blog-01-hello-world-deconstructed/helloworld.png)
 
 It's often noted that Java is overly verbose and is composed by a lot of `boilerplate` code, that is to say, template-like code that must be included for the desired code to run. In this example, the first two lines are boilerplate as they are not directly concerned with what we want to achieve - which is to simply display the phrase "Hello World!" to the person operating the computer, which is what the third line does. Part of the reason for this level of verbosity is due to the fact that Java is forcing you to adopt the `Object Oriented Programming` paradigm, in which a program seeks to represent the real-world as a set of `objects`.
 
@@ -43,7 +43,7 @@ We've just made a `Frog class` and a `Fly class`! Notice the initial capital let
 +--------------------+     +-----------------------------+
 ```
 I've taken the liberty to give the `Frog` the attribute of two `eyes`, and I've given the `Fly` the `iritateHuman()` (sic) behaviour. So you see how each class is contained in it's own file, and the class and filename are the same. This is useful because it keeps everything that is specific to the `Frog` in one place, and everything that is specific to the `Fly` in it's own place, which can help us out in the long run by making our overall program more navigatable and readable. This concept is refered to as `encapsulation`, allowing these related ideas to be put together into one unit.
-![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/encapsulate.jpg)
+![Modifiers](assets/blog-01-hello-world-deconstructed/encapsulate.jpg)
 This image shows multiple levels of encapsulation: the powered medicine is encapsulated in the pill, and the pills are encapsulated in the pill bottle - the encapsulation helps keep the things that belong together together.
 
 ## Term 1: `public`
@@ -52,7 +52,7 @@ Classes provide an opportunity to bring together all the low-level components (t
 
 The first term in our main example is where things get a little trickier. A class has an `access modifier`, which in our case is `public`. Besides the `public` modifier, there is also `private`, `protected` and the `package-private` modifier. This last one is the default modifier, that is to say that when you don't add any of the other modifier keywords, then the class is automatically designated as `package-private`, which is what the example `Frog` class above is. These access modifiers apply not only to classes, but also to methods, constructors and data members.
 
-![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/accessmod.png)
+![Modifiers](assets/blog-01-hello-world-deconstructed/accessmod.png)
 [credit](https://stackoverflow.com/a/215505)
 
 #### 1. `public` access modifier
@@ -99,7 +99,7 @@ Documents
 Packages are used for organising related classes, and to put a class in a package, you need to add the line
 `package `*packagename*`;`
 as the very first instruction in the source file. Typically you will see these in a format that has one or more identifiers separated by periods such as `java.util.random`. The naming format here is trying to make sure that each name is unique, so as to avoid namespace collisions and is the same as with import naming. For example, if I wanted to make use of the class `List`, I would find that there are quite a few:
-![Namespace](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/namespace.png)
+![Namespace](assets/blog-01-hello-world-deconstructed/namespace.png)
 *which one do I want?* I have to specify, and this reversed naming format helps keep all of these classes and packages separate.
 
 When the `protected` access modifier is used, it signals that the method, constructors or data member is accessible both within and outside the package but through inheritance only.
@@ -126,7 +126,7 @@ If all the classes in the above situation were given the `package private` acces
 The `private` access modifier gives us the uportunity to permit or deny the linking of low-level components with each other.
 
 - TODO: description and example
-![Iceberg](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/iceberg.png)
+![Iceberg](assets/blog-01-hello-world-deconstructed/iceberg.png)
 - TODO: difference between `encapsulation`, `information hiding` and `abstraction`
 
 ## Term 3: The name of the class
@@ -195,7 +195,7 @@ Hello John Smith
 The args array contains: [John, Smith]
 ```
 In order to pass in your own program arguments with an IDE (here shown with IntelliJ), update your `program arguments` in the "edit configurations..." window:
-![Program Arguments](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/arguments.png)
+![Program Arguments](assets/blog-01-hello-world-deconstructed/arguments.png)
 
 ## Term 10: The class `System`
 
