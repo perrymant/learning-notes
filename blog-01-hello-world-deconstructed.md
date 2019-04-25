@@ -44,7 +44,7 @@ We've just made a `Frog class` and a `Fly class`! Notice the initial capital let
 ```
 I've taken the liberty to give the `Frog` the attribute of two `eyes`, and I've given the `Fly` the `iritateHuman()` (sic) behaviour. So you see how each class is contained in it's own file, and the class and filename are the same. This is useful because it keeps everything that is specific to the `Frog` in one place, and everything that is specific to the `Fly` in it's own place, which can help us out in the long run by making our overall program more navigatable and readable. This concept is refered to as `encapsulation`, allowing these related ideas to be put together into one unit.
 ![Modifiers](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/encapsulate.jpg)
-This image shows multiple levels of encapsulation: the powered medicine is encapsulated in the pill, and the pills are encapsulated in the pill bottle.
+This image shows multiple levels of encapsulation: the powered medicine is encapsulated in the pill, and the pills are encapsulated in the pill bottle - the encapsulation helps keep the things that belong together together.
 
 ## Term 1: `public`
 
@@ -118,11 +118,16 @@ When no named package statements are included in a source file, then the classes
     │       ├── Flour.java
     │       └── Tomato.java
 ```
+
+If all the classes in the above situation were given the `package private` access modifier, then the class, field, method or constructor of the food package (Antipasti, Pasta and Pizza classe) would have no accessiblity to the class, field, method or constructor of the ingredients package (Cheese, Flour and Tomato classes).
+
 #### 4. `private` access modifier
 
+The `private` access modifier gives us the uportunity to permit or deny the linking of low-level components with each other.
+
+- TODO: description and example
 ![Iceberg](https://github.com/perrymant/learning-notes/blob/master/assets/blog-01-hello-world-deconstructed/iceberg.png)
-- gives us the uportunity to permit or deny the linking of low-level components with each other.
-- `encapsulation`, `information hiding` and `abstraction`
+- TODO: difference between `encapsulation`, `information hiding` and `abstraction`
 
 ## Term 3: The name of the class
 
@@ -249,9 +254,9 @@ public final class String
     ...
 ```
 
-## How to run this from the command line?
+## Running the program
 
-The first step is to compile the program, which is done using the command `javac` followed by the name of the file we wish to compile. Upon successful compilation, we may run the program using the `java` command, followed by the name of the program we just compiled (no extension required this time).
+So how do we run this program from the command line? The first step is to compile the program, which is done using the command `javac` followed by the name of the file we wish to compile. Upon successful compilation, we may run the program using the `java` command, followed by the name of the program we just compiled (no extension required this time):
 
 ```bash
 $ javac HelloWorld.java
@@ -259,3 +264,5 @@ $ javac HelloWorld.java
 $ java HelloWorld
 Hello World
 ```
+
+Goodbye world!
